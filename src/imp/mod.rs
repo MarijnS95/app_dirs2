@@ -10,9 +10,7 @@ mod platform {
 }
 #[cfg(all(
     unix,
-    not(target_os = "macos"),
-    not(target_os = "ios"),
-    not(target_os = "android")
+    not(any(target_os = "macos", target_os = "ios", target_os = "android"))
 ))]
 mod platform {
     mod unix;
