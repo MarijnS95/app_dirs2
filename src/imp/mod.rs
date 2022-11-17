@@ -113,7 +113,7 @@ pub fn get_app_root(t: AppDataType, app: &AppInfo) -> Result<PathBuf, AppDirsErr
 /// create the full hierarchy. Therefore, a result of `Ok` guarantees that the
 /// returned path exists.
 pub fn data_root(t: AppDataType) -> Result<PathBuf, AppDirsError> {
-    let path = platform::get_app_dir(t)?;
+    let path = get_data_root(t)?;
     match fs::create_dir_all(&path) {
         Ok(..) => Ok(path),
         Err(e) => Err(e.into()),
